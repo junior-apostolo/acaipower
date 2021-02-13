@@ -8,6 +8,7 @@ public class PowerAcaiApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(PowerAcaiApplication.class, args);
+
 	}
 
 }
