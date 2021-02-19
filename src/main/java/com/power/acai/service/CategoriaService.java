@@ -2,11 +2,11 @@ package com.power.acai.service;
 
 import java.util.Optional;
 
-import com.power.acai.model.Categoria;
-import com.power.acai.repository.CategoriaRepository;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.power.acai.model.Categoria;
+import com.power.acai.repository.CategoriaRepository;
 
 @Service
 public class CategoriaService {
@@ -18,7 +18,8 @@ public class CategoriaService {
         return categoriaRepository.save(categoria);
 	}
 
-
-
+	public Optional<Categoria> findById(int i) {
+		return categoriaRepository.findById(i);
+	}
 
 }

@@ -17,39 +17,45 @@ import lombok.Getter;
 @Entity
 public class Categoria {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    private String descricao;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
+	private String descricao;
 	@JsonBackReference
-    @OneToOne(mappedBy = "categoria")
-    private Produto produto;
+	@OneToOne(mappedBy = "categoria")
+	private Produto produto;
 
-    public Integer getId() {
-        return id;
-    }
+	public Categoria(String descricao) {
+		this.descricao = descricao;
+	}
+	
+	public Categoria(Integer id, String descricao) {
+		this.id = id;
+		this.descricao = descricao;
+	}
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+	public Integer getId() {
+		return id;
+	}
 
-    public String getDescricao() {
-        return descricao;
-    }
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
+	public String getDescricao() {
+		return descricao;
+	}
 
-    public Produto getProduto() {
-        return produto;
-    }
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
 
-    public void setProduto(Produto produto) {
-        this.produto = produto;
-    }
+	public Produto getProduto() {
+		return produto;
+	}
 
+	public void setProduto(Produto produto) {
+		this.produto = produto;
+	}
 
-
-    
 }

@@ -10,6 +10,10 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.power.acai.service.exceptions.AuthorizationException;
+import com.power.acai.service.exceptions.DataIntegrityException;
+import com.power.acai.service.exceptions.FileException;
+
 @ControllerAdvice
 public class ResourceExceptionHandler {
 
@@ -49,22 +53,6 @@ public class ResourceExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
     }
 
-    @ExceptionHandler(AmazonServiceException.class)
-    public ResponseEntity<StandardError> amazonService(AmazonServiceException e, HttpServletRequest request) {
-        HttpStatus code = HttpStatus.valueOf(e.getErrorCode());
-        StandardError error = new StandardError(System.currentTimeMillis(), code.value(), "Erro Amazon Service", e.getMessage(), request.getRequestURI());
-        return ResponseEntity.status(code).body(error);
-    }
 
-    @ExceptionHandler(AmazonClientException.class)
-    public ResponseEntity<StandardError> amazonClient(AmazonClientException e, HttpServletRequest request) {
-        StandardError error = new StandardError(System.currentTimeMillis(), HttpStatus.BAD_REQUEST.value(), "Erro Amazon Client", e.getMessage(), request.getRequestURI());
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
-    }
 
-    @ExceptionHandler(AmazonS3Exception.class)
-    public ResponseEntity<StandardError> amazonS3(AmazonS3Exception e, HttpServletRequest request) {
-        StandardError error = new StandardError(System.currentTimeMillis(), HttpStatus.BAD_REQUEST.value(), "Erro S3", e.getMessage(), request.getRequestURI());
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
-    }
 }

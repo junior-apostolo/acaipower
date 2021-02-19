@@ -2,9 +2,11 @@ package com.power.acai.controller;
 
 import java.util.List;
 
+import com.power.acai.dto.ProdutoDTO;
 import com.power.acai.model.Produto;
 import com.power.acai.service.ProdutoService;
 import com.power.acai.service.exceptions.ObjectNotFoundException;
+import com.power.acai.util.URL;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -27,20 +29,20 @@ public class ProdutoController {
         return ResponseEntity.ok().body(obj);
     }
 
-    @GetMapping()
-    public ResponseEntity<Page<ProdutoDTO>> findPage(
-            @RequestParam(value = "nome", defaultValue = "") String nome,
-            @RequestParam(value = "categorias", defaultValue = "") String categorias,
-            @RequestParam(value = "page", defaultValue = "0") Integer page,
-            @RequestParam(value = "linesPerPage", defaultValue = "24") Integer linesPerPage,
-            @RequestParam(value = "orderBy", defaultValue = "nome") String orderBy,
-            @RequestParam(value = "direction", defaultValue = "ASC") String direction) {
+    // @GetMapping()
+    // public ResponseEntity<Page<ProdutoDTO>> findPage(
+    //         @RequestParam(value = "descricao", defaultValue = "") String descricao,
+    //         @RequestParam(value = "categorias", defaultValue = "") String categorias,
+    //         @RequestParam(value = "page", defaultValue = "0") Integer page,
+    //         @RequestParam(value = "linesPerPage", defaultValue = "24") Integer linesPerPage,
+    //         @RequestParam(value = "orderBy", defaultValue = "descricao") String orderBy,
+    //         @RequestParam(value = "direction", defaultValue = "ASC") String direction) {
 
-        String nomeDecoded = URL.decodeParam(nome);
-        List<Integer> ids = URL.decodeIntList(categorias);
+    //     String nomeDecoded = URL.decodeParam(descricao);
+    //     List<Integer> ids = URL.decodeIntList(categorias);
 
-        Page<Produto> categoriaList = produtoService.search(nomeDecoded, ids, page, linesPerPage, orderBy, direction);
-        Page<ProdutoDTO> categoriaDTOList = categoriaList.map(obj -> new ProdutoDTO(obj));
-        return ResponseEntity.ok().body(categoriaDTOList);
-    }
+    //     Page<Produto> categoriaList = produtoService.search(nomeDecoded, ids, page, linesPerPage, orderBy, direction);
+    //     Page<ProdutoDTO> categoriaDTOList = categoriaList.map(obj -> new ProdutoDTO(obj));
+    //     return ResponseEntity.ok().body(categoriaDTOList);
+    // }
 }

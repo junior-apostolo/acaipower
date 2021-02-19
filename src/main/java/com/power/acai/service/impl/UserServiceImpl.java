@@ -3,6 +3,7 @@ package com.power.acai.service.impl;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -58,6 +59,10 @@ public class UserServiceImpl implements UserDetailsService, UserService {
 	public User findOne(String username) {
 		return userDao.findByUsername(username);
 	}
+	
+	public Optional<User> findById(long i){
+		return userDao.findById(i);
+	} 
 
 	@Override
 	public User save(UserDto user) {

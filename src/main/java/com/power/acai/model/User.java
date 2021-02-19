@@ -51,7 +51,32 @@ public class User {
             @JoinColumn(name = "ROLE_ID") })
     private Set<Role> roles;
 
-    public long getId() {
+    
+    public User() {
+	}
+
+	public User(long id, String username, String password, String email, String phone, String name,
+			String businessTitle) {
+		super();
+		this.id = id;
+		this.username = username;
+		this.password = password;
+		this.email = email;
+		this.phone = phone;
+		this.name = name;
+		this.businessTitle = businessTitle;
+	}
+
+	public User(String username, String password, String email, String phone, String name, String businessTitle) {
+		this.username = username;
+		this.password = password;
+		this.email = email;
+		this.phone = phone;
+		this.name = name;
+		this.businessTitle = businessTitle;
+	}
+
+	public long getId() {
         return id;
     }
 

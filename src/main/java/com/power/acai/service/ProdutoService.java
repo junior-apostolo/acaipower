@@ -27,12 +27,13 @@ public class ProdutoService {
     public Produto findById(Integer id) throws ObjectNotFoundException {
         Optional<Produto> obj = produtoRepository.findById(id);
         return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado! Id: " + id +
-                ", Tipo: " + Produto.class.getName()));s
+                ", Tipo: " + Produto.class.getName()));
     }
 
-    public Page<Produto> search(String nome, List<Integer> ids, Integer page, Integer linesPerPage, String orderBy, String direction){
-        PageRequest pageRequest = PageRequest.of(page, linesPerPage, Sort.Direction.valueOf(direction), orderBy);
-        List<Categoria> categoriasList = categoriaRepository.findAllById(ids);
+    // public Page<Produto> search(String nome, List<Integer> ids, Integer page, Integer linesPerPage, String orderBy, String direction){
+    //     PageRequest pageRequest = PageRequest.of(page, linesPerPage, Sort.Direction.valueOf(direction), orderBy);
+    //     List<Categoria> categoriasList = categoriaRepository.findAllById(ids);
 
-        return produtoRepository.findDistinctByNomeContainingAndCategoriasIn(nome, categoriasList, pageRequest);
-    }}
+    //     return produtoRepository.findDistinctByNomeContainingAndCategoriasIn(nome, categoriasList, pageRequest);
+    // }
+}

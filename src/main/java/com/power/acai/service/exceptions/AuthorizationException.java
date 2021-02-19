@@ -1,4 +1,6 @@
-import javassist.NotFoundException;
+package com.power.acai.service.exceptions;
+
+import  javassist.NotFoundException ;
 
 public class AuthorizationException extends NotFoundException {
 

@@ -1,11 +1,6 @@
 package com.power.acai.controller;
 
 import java.util.Arrays;
-import java.util.Optional;
-
-import com.power.acai.model.Categoria;
-import com.power.acai.service.CategoriaService;
-import com.power.acai.util.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +9,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.power.acai.model.Categoria;
+import com.power.acai.service.CategoriaService;
+import com.power.acai.util.Response;
+
+
+
 
 @RestController
 @RequestMapping("/categoria")

@@ -23,6 +23,6 @@ public interface ProdutoRepository extends JpaRepository<Produto, Integer> {
 
 
     //Esse metodo de pesquisa faz a mesma coisa do "SEARCH" feito encima, só que utilizando os Data query do jpa
-    @Transactional(readOnly=true)
-    Page<Produto> findDistinctByNomeContainingAndCategoriasIn(String nome, List<Categoria> categoriasList, Pageable pageRequest);
+    // @Transactional(readOnly=true)
+    // Page<Produto> findDistinctByDescricaoContainingAndCategoriasIn(String descricao, List<Categoria> categoriasList, Pageable pageRequest);
 }

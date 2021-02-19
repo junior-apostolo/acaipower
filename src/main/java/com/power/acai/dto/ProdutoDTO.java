@@ -20,28 +20,30 @@ public class ProdutoDTO implements Serializable {
             this.descricao = obj.getDescricao();
             this.valor = obj.getValor();
         }
-    
+
         public Integer getId() {
             return id;
         }
-    
+
         public void setId(Integer id) {
             this.id = id;
         }
-    
-        public String getNome() {
+
+        public String getDescricao() {
             return descricao;
         }
-    
-        public void setNome(String nome) {
-            this.descricao = nome;
+
+        public void setDescricao(String descricao) {
+            this.descricao = descricao;
         }
-    
-        public BigDecimal getPreco() {
+
+        public BigDecimal getValor() {
             return valor;
         }
-    
-        public void setPreco(BigDecimal preco) {
-            this.valor = preco;
+
+        public void setValor(BigDecimal valor) {
+            this.valor = valor;
         }
+    
+ 
 }
