@@ -42,7 +42,6 @@ public class UserSeviceTest {
 		User user1 = new User(1, "kaiquemotta", "123", "kaique.motta@hotmail.com", "11989778962",
 				"kaique de jesus motta", "auto geral");
 		Mockito.when(userRepository.findByUsername("kaiquemotta")).thenReturn(user1);
-
 		Optional<User> user2 = Optional.ofNullable(new User(2, "kaiquemotta", "123", "kaique.motta@hotmail.com",
 				"11989778962", "kaique de jesus motta", "auto geral"));
 		Mockito.when(userRepository.findById(2L)).thenReturn(user2);
@@ -53,7 +52,11 @@ public class UserSeviceTest {
 	public void cadastraUsuario() {
 		UserDto user = new UserDto("kaiquemotta", "123", "kaique.motta@hotmail.com", "11989778962",
 				"Kaique de jesus Motta", "auto geral");
-		userService.save(user);
+		User u = new User();
+		Mockito.when(userRepository.save(Mockito.any(user.getUserFromDto().getClass())))
+				.thenAnswer(i -> i.getArgument(0));
+		u = userService.save(user);
+		assertNotNull(u);
 	}
 
 	@Test
