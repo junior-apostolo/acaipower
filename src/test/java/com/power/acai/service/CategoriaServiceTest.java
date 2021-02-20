@@ -1,7 +1,9 @@
 package com.power.acai.service;
 
 
-import static org.junit.Assert.assertNotNull;
+
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 import java.util.Optional;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -36,7 +38,7 @@ public class CategoriaServiceTest   {
 
 	@BeforeEach
 	public void setup() {
-		Categoria categoria = new Categoria(1, "Comida");+
+		Categoria categoria = new Categoria(1, "Comida");
 		
 		Mockito.when(categoriaRepository.findById(1)).thenReturn(Optional.of(categoria));
 	}

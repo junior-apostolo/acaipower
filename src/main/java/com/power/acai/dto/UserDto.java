@@ -11,6 +11,16 @@ public class UserDto {
 	private String name;
 	private String businessTitle;
 
+	public UserDto(String username, String password, String email, String phone, String name, String businessTitle) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.email = email;
+		this.phone = phone;
+		this.name = name;
+		this.businessTitle = businessTitle;
+	}
+
 	public String getUsername() {
 		return username;
 	}

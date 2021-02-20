@@ -66,19 +66,15 @@ public class UserServiceImpl implements UserDetailsService, UserService {
 
 	@Override
 	public User save(UserDto user) {
-
 		User nUser = user.getUserFromDto();
 		nUser.setPassword(bcryptEncoder.encode(user.getPassword()));
-
 		Role role = roleService.findByName("USER");
 		Set<Role> roleSet = new HashSet<>();
 		roleSet.add(role);
-
 		if (nUser.getEmail().split("@")[1].equals("admin.edu")) {
 			role = roleService.findByName("ADMIN");
 			roleSet.add(role);
 		}
-
 		nUser.setRoles(roleSet);
 		return userDao.save(nUser);
 	}
