@@ -1,4 +1,4 @@
-package com.power.acai.service.exceptions;
+package com.power.acai.util.exception;
 
 import  javassist.NotFoundException ;
 

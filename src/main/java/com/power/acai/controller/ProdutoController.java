@@ -5,8 +5,8 @@ import java.util.List;
 import com.power.acai.dto.ProdutoDTO;
 import com.power.acai.model.Produto;
 import com.power.acai.service.ProdutoService;
-import com.power.acai.service.exceptions.ObjectNotFoundException;
 import com.power.acai.util.URL;
+import com.power.acai.util.exception.ObjectNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

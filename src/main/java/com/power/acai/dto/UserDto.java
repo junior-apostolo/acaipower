@@ -1,5 +1,9 @@
 package com.power.acai.dto;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import com.power.acai.model.Role;
 import com.power.acai.model.User;
 
 public class UserDto {
@@ -10,6 +14,7 @@ public class UserDto {
 	private String phone;
 	private String name;
 	private String businessTitle;
+	private Set<Role> roles = new HashSet<>();
 
 	public UserDto(String username, String password, String email, String phone, String name, String businessTitle) {
 		super();
@@ -69,6 +74,14 @@ public class UserDto {
 		this.businessTitle = businessTitle;
 	}
 
+	public Set<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
+	}
+
 	public User getUserFromDto() {
 		User user = new User();
 		user.setUsername(username);
@@ -77,7 +90,14 @@ public class UserDto {
 		user.setPhone(phone);
 		user.setName(name);
 		user.setBusinessTitle(businessTitle);
+		if (this.roles == null || this.roles.isEmpty()) {
+			Role role = new Role(1, "USER", "USER");
+			user.setRoles(Set.of(role));
+		} else {
+			Role role = new Role(2, "ADMIN", "ADMIN");
+			user.setRoles(Set.of(role));
 
+		}
 		return user;
 	}
 }

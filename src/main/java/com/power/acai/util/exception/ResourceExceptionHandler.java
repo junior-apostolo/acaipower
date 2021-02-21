@@ -10,10 +10,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.power.acai.service.exceptions.AuthorizationException;
-import com.power.acai.service.exceptions.DataIntegrityException;
-import com.power.acai.service.exceptions.FileException;
-
 @ControllerAdvice
 public class ResourceExceptionHandler {
 

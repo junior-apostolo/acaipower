@@ -13,6 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Bean;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.power.acai.dto.UserDto;
@@ -22,12 +23,15 @@ import com.power.acai.service.impl.UserServiceImpl;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(properties = "spring.main.allow-bean-definition-overriding=true")
-public class UserSeviceTest {
+public class TestServiceUser {
 
 	@Autowired
 	UserServiceImpl userService;
 	@MockBean
 	UserRepository userRepository;
+
+	@Autowired
+	SmtpEmailService stmp;
 
 	@TestConfiguration
 	static class UserServiceTestConfiguration {
@@ -35,7 +39,16 @@ public class UserSeviceTest {
 		public UserServiceImpl userServiceTest() {
 			return new UserServiceImpl();
 		}
+
+		@Bean
+		public EmailService emailService() {
+			return new SmtpEmailService();
+		}
 	}
+
+	/*
+	 * seta informacoes para depois realizar alguns testes
+	 */
 
 	@BeforeEach
 	public void setup() {
@@ -48,6 +61,10 @@ public class UserSeviceTest {
 
 	}
 
+	/*
+	 * registra usuario
+	 */
+
 	@Test
 	public void cadastraUsuario() {
 		UserDto user = new UserDto("kaiquemotta", "123", "kaique.motta@hotmail.com", "11989778962",
@@ -59,16 +76,29 @@ public class UserSeviceTest {
 		assertNotNull(u);
 	}
 
+	/*
+	 * busca usuario pelo nome
+	 */
 	@Test
 	public void findOneUserName() {
 		User u = userService.findOne("kaiquemotta");
 		assertNotNull(u);
 	}
 
+	/*
+	 * busca usuario pelo id
+	 */
 	@Test
 	public void findOneId() {
 		Optional<User> u = userService.findById(2L);
 		assertNotNull(u.get());
 	}
 
+	@Test
+	public void testeEnvioSenha() {
+		Optional<User> u = userService.findById(2L);
+		stmp.sendNewPasswordEmail(u.get(), "12345");
+
+	}
+	
 }

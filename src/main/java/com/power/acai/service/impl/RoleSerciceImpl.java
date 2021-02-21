@@ -1,5 +1,7 @@
 package com.power.acai.service.impl;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,5 +18,9 @@ public class RoleSerciceImpl implements RoleService {
 	public Role findByName(String name) {
 		Role role = roleDao.findRoleByName(name);
 		return role;
+	}
+	@Override
+	public Optional<Role> findById(long id) {
+		return roleDao.findById(id);
 	}
 }

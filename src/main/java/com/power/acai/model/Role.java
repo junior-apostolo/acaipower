@@ -18,8 +18,19 @@ public class Role {
 
 	    @Column
 	    private String description;
+	    
+	    public Role() {
+	    	
+	    }
 
-	    public long getId() {
+	    public Role(long id, String name, String description) {
+			super();
+			this.id = id;
+			this.name = name;
+			this.description = description;
+		}
+
+		public long getId() {
 	        return id;
 	    }
 

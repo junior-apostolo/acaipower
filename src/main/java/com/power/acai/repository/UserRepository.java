@@ -1,8 +1,14 @@
 package com.power.acai.repository;
 
-import com.power.acai.model.User;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface UserRepository extends CrudRepository<User, Long> {
+import com.power.acai.model.User;
+
+@Repository
+public interface UserRepository extends JpaRepository<User, Long> {
     User findByUsername(String username);
+
+	User findByEmail(String email);
+	
 }

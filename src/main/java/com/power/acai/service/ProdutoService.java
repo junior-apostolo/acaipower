@@ -12,7 +12,8 @@ import com.power.acai.model.Categoria;
 import com.power.acai.model.Produto;
 import com.power.acai.repository.CategoriaRepository;
 import com.power.acai.repository.ProdutoRepository;
-import com.power.acai.service.exceptions.ObjectNotFoundException;
+import com.power.acai.util.exception.ObjectNotFoundException;
+
 import org.springframework.stereotype.Service;
 
 @Service
